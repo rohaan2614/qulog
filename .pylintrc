@@ -1,2 +1,2 @@
 [MASTER]
-disable= wildcard-import
+disable= wildcard-import, line-too-long
