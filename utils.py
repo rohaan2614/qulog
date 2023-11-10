@@ -6,7 +6,6 @@ import re
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import spacy
-from os.path import split
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -113,30 +112,6 @@ def pos_num(txt):
     return part_of_speech
 
 
-# def preprocess(file):
-#     """
-#     The `preprocess` function reads a pickle file into a pandas DataFrame, adds three new columns to the
-#     DataFrame by applying different functions to the "static_text" column, prints the first few rows of
-#     the DataFrame, and saves the modified DataFrame as a new pickle file.
-    
-#     :param file: The `file` parameter is the path to the pickle file that contains the data you want to
-#     preprocess
-#     """
-#     df = pd.read_pickle(file)
-#     df["tokens"] = df["static_text"].apply(tokenize)
-#     df["pos"] = df["static_text"].apply(pos)
-#     df["pos_num"] = df["static_text"].apply(pos_num)
-
-#     print(f"[UTIL_PREPROCESS]\tfile: \n {split(file)[1]}")
-    
-#     print(df.head())
-#     print(df.iloc[0, 2])
-#     print(df.iloc[0, 3])
-#     print(df.iloc[0, 4])
-
-#     file_new = file.replace(".pickle", "_tokenized.pickle")
-#     df.to_pickle(file_new)
-
 def preprocess(df):
     """
     The function preprocess takes a dataframe as input and adds three new columns to it: 'tokens' which
@@ -154,6 +129,6 @@ def preprocess(df):
     df['tokens'] = df['static_text'].apply(tokenize)
     #Creates a column for parts of speech
     df['pos'] = df['static_text'].apply(pos)
-    #Creates a column for numeric parts of speach tags
+    #Creates a column for numeric parts of speech tags
     df['posNum'] = df['static_text'].apply(pos_num)
     return df

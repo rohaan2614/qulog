@@ -34,3 +34,4 @@ class Model(nn.Module):
         x = F.softmax(self.fc2(x))
         x = self.out(x)
         return x
+    
